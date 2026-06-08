@@ -1,0 +1,63 @@
+{
+  "name": "@iota-tools/iota-monitor",
+  "version": "0.1.0",
+  "description": "IOTA Rebased Network Monitor CLI — real-time network analytics, transaction lookup, address inspection, and validator status from the terminal",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "bin": {
+    "iota-monitor": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "node --experimental-vm-modules node_modules/vitest/vitest.mjs run",
+    "test:watch": "node --experimental-vm-modules node_modules/vitest/vitest.mjs watch",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "iota",
+    "blockchain",
+    "monitor",
+    "cli",
+    "network",
+    "validator"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@iota/iota-sdk": "^1.14.0",
+    "chalk": "^5.4.1",
+    "cli-table3": "^0.6.5",
+    "commander": "^13.1.0",
+    "ora": "^8.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iota-tools/iota-monitor"
+  },
+  "bugs": {
+    "url": "https://github.com/iota-tools/iota-monitor/issues"
+  },
+  "homepage": "https://github.com/iota-tools/iota-monitor#readme"
+}

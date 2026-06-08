@@ -1,0 +1,13 @@
+node_modules/
+dist/
+*.tgz
+.env
+build/
+out/
+target/
+artifacts/
+cache/
+coverage/
+.cache/
+__pycache__/
+*.log
