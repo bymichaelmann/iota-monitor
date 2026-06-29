@@ -1,0 +1,46 @@
+{
+  "comment": "Example rules configuration for iota-monitor sentinel mode. Use: iota-monitor sentinel --config rules.example.json --interval 30",
+  "rules": [
+    {
+      "id": "balance-alert",
+      "type": "balance_threshold",
+      "params": {
+        "address": "0x1234567890abcdef1234567890abcdef12345678",
+        "below": "10"
+      },
+      "notify": ["stdout", "webhook"]
+    },
+    {
+      "id": "validator-changes",
+      "type": "validator_change",
+      "params": {},
+      "notify": ["stdout"]
+    },
+    {
+      "id": "gas-price-spike",
+      "type": "network_param",
+      "params": {
+        "gasAbove": "10000"
+      },
+      "notify": ["stdout"]
+    },
+    {
+      "id": "address-activity",
+      "type": "address_activity",
+      "params": {
+        "address": "0xabcdef1234567890abcdef1234567890abcdef12",
+        "direction": "from"
+      },
+      "notify": ["stdout"]
+    },
+    {
+      "id": "move-events",
+      "type": "move_event",
+      "params": {
+        "package": "0x2",
+        "module": "iota_system"
+      },
+      "notify": ["stdout"]
+    }
+  ]
+}

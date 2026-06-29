@@ -9,6 +9,8 @@ import { addressInfo } from "./commands/address.js";
 import { validatorsList } from "./commands/validators.js";
 import { checkpointDetails } from "./commands/checkpoint.js";
 import { watchMode } from "./commands/watch.js";
+import { sentinelRun } from "./sentinel/index.js";
+import type { SentinelConfig } from "./sentinel/index.js";
 import { error } from "./utils/display.js";
 
 const program = new Command();
@@ -86,6 +88,28 @@ program
   .action(async () => {
     const { client, network } = getClient(program);
     await watchMode(client, network);
+  });
+
+// Sentinel / Alerting mode
+program
+  .command("sentinel")
+  .description("Alerting daemon that monitors IOTA based on rules and sends notifications")
+  .requiredOption("--config <file>", "Path to rules JSON file")
+  .option("--interval <seconds>", "Polling interval in seconds", "15")
+  .option("--once", "Run once and exit (exit code = number of alerts)")
+  .option("--metrics-port <port>", "Port for Prometheus metrics endpoint")
+  .action(async (opts: { config: string; interval: string; once?: boolean; metricsPort?: string }) => {
+    const { client } = getClient(program);
+    const config: SentinelConfig = {
+      configPath: opts.config,
+      pollingInterval: parseInt(opts.interval, 10) || 15,
+      once: opts.once ?? false,
+      metricsPort: opts.metricsPort ? parseInt(opts.metricsPort, 10) : undefined,
+    };
+    const alertCount = await sentinelRun(client, config);
+    if (opts.once) {
+      process.exit(alertCount > 0 ? 1 : 0);
+    }
   });
 
 program.parse(process.argv);
