@@ -1,0 +1,11 @@
+{
+  "digest": "0xcheckpointdigest1234567890abcdef1234567890abcdef1234567890abcdef",
+  "epoch": "42",
+  "sequenceNumber": "1234567",
+  "transactions": [
+    "0xtx1",
+    "0xtx2",
+    "0xtx3"
+  ],
+  "timestampMs": "1717740060000"
+}

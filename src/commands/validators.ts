@@ -1,6 +1,6 @@
 import type { IotaClient } from "@iota/iota-sdk/client";
 import type { Network, ValidatorInfo } from "../lib/types.js";
-import { formatIota, formatCommission, truncateAddress } from "../lib/format.js";
+import { formatIota, formatCommission, formatApr, truncateAddress } from "../lib/format.js";
 import { columnTable, success, error, spinner } from "../utils/display.js";
 
 /**
@@ -33,6 +33,7 @@ export async function validatorsList(
       commission: v.commissionRate !== undefined
         ? formatCommission(Number(v.commissionRate))
         : "N/A",
+      apr: v.apy ? formatApr(Number(v.apy)) : "N/A",
       address: v.iotaAddress || "Unknown",
     }));
 
@@ -43,12 +44,13 @@ export async function validatorsList(
       return bStake - aStake;
     });
 
-    const headers = ["#", "Name", "Stake (IOTA)", "Commission", "Address"];
+    const headers = ["#", "Name", "Stake (IOTA)", "Commission", "APR", "Address"];
     const rows = validators.map((v, i) => [
       String(i + 1),
       v.name,
       v.stake,
       v.commission,
+      v.apr || "N/A",
       truncateAddress(v.address),
     ]);
 

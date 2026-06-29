@@ -40,11 +40,16 @@ export async function addressInfo(
     const objCount = ownedObjects?.data?.length ?? 0;
     const txCount = recentTxs?.data?.length ?? 0;
 
+    const OBJ_LIMIT = 50;
+    const TX_LIMIT = 10;
+    const objDisplay = objCount >= OBJ_LIMIT ? `${formatNumber(objCount)}+` : formatNumber(objCount);
+    const txDisplay = txCount >= TX_LIMIT ? `${formatNumber(txCount)}+` : formatNumber(txCount);
+
     const rows: [string, string][] = [
       ["Address", address],
       ["Balance (IOTA)", balanceIota],
-      ["Owned Objects", formatNumber(objCount)],
-      ["Recent Tx Count", formatNumber(txCount)],
+      ["Owned Objects", objDisplay],
+      ["Recent Tx Count", txDisplay],
       ["Network", network],
     ];
 

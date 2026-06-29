@@ -49,6 +49,7 @@ export interface ValidatorInfo {
   name: string;
   stake: string;
   commission: string;
+  apr?: string;
   address: string;
 }
 

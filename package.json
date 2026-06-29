@@ -59,5 +59,6 @@
   "bugs": {
     "url": "https://github.com/iota-tools/iota-monitor/issues"
   },
-  "homepage": "https://github.com/iota-tools/iota-monitor#readme"
+  "homepage": "https://github.com/iota-tools/iota-monitor#readme",
+  "author": "Michael Mann <michaelmann@disroot.org>"
 }

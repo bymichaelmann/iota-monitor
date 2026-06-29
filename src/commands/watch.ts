@@ -20,6 +20,7 @@ export async function watchMode(
 
   let lastCheckpointSeq = 0;
   let lastTimestampMs = 0;
+  let tpsPeak: number | null = null;
 
   const updateDashboard = async (): Promise<void> => {
     try {
@@ -56,6 +57,9 @@ export async function watchMode(
             if (timeDiff > 0) {
               const tps = (txCount / (timeDiff / 1000));
               tpsEstimate = tps > 0 ? `~${formatNumber(Math.round(tps))}` : "<1";
+              if (tps > (tpsPeak ?? 0)) {
+                tpsPeak = Math.round(tps);
+              }
               const cps = (seqDiff / (timeDiff / 1000));
               checkpointRate = cps > 0 ? `+${cps.toFixed(1)}/s` : "+0/s";
             }
@@ -93,6 +97,7 @@ export async function watchMode(
         latestCheckpoint: formatNumber(seqNum),
         checkpointRate,
         tpsEstimate,
+        tpsPeak: tpsPeak !== null ? formatNumber(tpsPeak) : undefined,
         validatorCount,
         network,
         lastUpdated: now,
@@ -159,7 +164,7 @@ export async function watchMode(
       chalk.bold.cyan("│") +
       ` ${cpRate}`.padEnd(14) +
       chalk.bold.cyan("│") +
-      ` ${chalk.dim("peak 2K")}`.padEnd(14) +
+      ` ${data.tpsPeak ? chalk.dim("peak " + data.tpsPeak) : chalk.dim("peak N/A")}`.padEnd(14) +
       chalk.bold.cyan("│") +
       ` ${"".padEnd(20)}` +
       chalk.bold.cyan("│")

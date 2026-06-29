@@ -4,7 +4,6 @@
 Build a CLI tool (`iota-monitor`) for monitoring the IOTA Rebased blockchain network. It connects via the official `@iota/iota-sdk` TypeScript SDK and provides real-time network analytics, transaction lookup, address inspection, and validator status — all from the terminal.
 
 **Category:** Open-Source Dev — Tooling, Libraries, Public Goods
-**Criteria:** Open-source, benefits IOTA/Shimmer network, evaluated on expertise, usefulness, long-term viability, safety, scale.
 
 ## Tech Stack
 - **Runtime:** Node.js 20+ (TypeScript, compiled)
@@ -103,10 +102,12 @@ Last updated: 2025-06-07 14:30:00 UTC
 
 ## Installation
 ```bash
-npx @iota-tools/iota-monitor network
-# Or global install:
-npm install -g @iota-tools/iota-monitor
-iota-monitor network
+git clone https://github.com/iota-tools/iota-monitor.git
+cd iota-monitor
+npm install
+npm run build
+node dist/index.js network
+# Or: npm link && iota-monitor network
 ```
 
 ## Git repo

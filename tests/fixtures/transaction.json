@@ -1,0 +1,25 @@
+{
+  "digest": "0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890ab",
+  "transaction": {
+    "data": {
+      "sender": "0xsender1234567890abcdef1234567890abcdef1234567890abcdef12345678"
+    }
+  },
+  "effects": {
+    "status": {
+      "status": "success"
+    },
+    "gasUsed": {
+      "computationCost": "1000000"
+    },
+    "created": [
+      {
+        "owner": {
+          "AddressOwner": "0xrecipient1234567890abcdef1234567890abcdef1234567890abcdef12"
+        }
+      }
+    ],
+    "mutated": []
+  },
+  "timestampMs": "1717740030000"
+}

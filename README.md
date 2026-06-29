@@ -18,17 +18,13 @@ Built with the official `@iota/iota-sdk` TypeScript SDK for the IOTA Rebased blo
 
 ## Installation
 
-### Quick use with npx
-
 ```bash
-npx @iota-tools/iota-monitor network
-```
-
-### Global install
-
-```bash
-npm install -g @iota-tools/iota-monitor
-iota-monitor network
+git clone https://github.com/iota-tools/iota-monitor.git
+cd iota-monitor
+npm install
+npm run build
+node dist/index.js network
+# Or: npm link && iota-monitor network
 ```
 
 ## Usage

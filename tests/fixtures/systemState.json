@@ -1,0 +1,26 @@
+{
+  "epoch": "42",
+  "epochStartTimestampMs": "1717740000000",
+  "activeValidators": [
+    {
+      "name": "Validator Alpha",
+      "stakingPoolIotaBalance": "5000000000000",
+      "commissionRate": "200",
+      "apy": "0.0524",
+      "iotaAddress": "0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890ab"
+    },
+    {
+      "name": "Validator Beta",
+      "stakingPoolIotaBalance": "3000000000000",
+      "commissionRate": "500",
+      "apy": "0.0410",
+      "iotaAddress": "0x1111111111111111111111111111111111111111111111111111111111111111"
+    },
+    {
+      "name": "Validator Gamma",
+      "stakingPoolIotaBalance": "1000000000000",
+      "commissionRate": "1000",
+      "iotaAddress": "0x2222222222222222222222222222222222222222222222222222222222222222"
+    }
+  ]
+}
